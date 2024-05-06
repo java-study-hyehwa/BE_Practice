@@ -69,7 +69,8 @@ public class AccountDao {
             pstmt.setInt(4, account.getBalance());
             result = pstmt.execute(); // 성공시 false, 실패시 true
             if (!result) {
-                resultMessage = account.getaccountNum() + " " + account.getProductType() +" 계좌의 생성이 완료되었습니다.";
+                //
+                resultMessage = account.getProductType() +"계좌 " + account.getaccountNum() + "의 생성이 완료되었습니다.";
             } else {
                 resultMessage = "계좌 개설에 실패하였습니다.";
             }

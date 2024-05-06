@@ -26,6 +26,7 @@ public enum Message {
     INFO_SUCCESS_LOGIN(() -> "[Info] ?님 환영합니다!"),
     INFO_SUCCESS_USER_SIGNUP(() -> "[Info] ?님의 가입이 완료되었습니다."),
     INFO_SUCCESS_USER_WITHDRAWAL(() -> "[Info] ?님의 탈퇴가 완료되었습니다."),
+    INFO_SUCCESS_ACCOUNT_OPEN(() -> "? 계좌 ?의 생성이 완료되었습니다."),
     INFO_CANCLE_WORK(() -> "[Info] 작업을 취소합니다."),
     INFO_CANCLE_TRADE(() -> "[Info] ?을 취소합니다."),
     INFO_CANCLE_OPEN_ACCOUNT(() -> "[Info] 상품 가입을 취소합니다."),
@@ -47,7 +48,7 @@ public enum Message {
         return message.get().replace("?", variable);
     }
 
-    public String getMessage(ArrayList<String> variables) {
+    public <T> String getMessage(ArrayList<T> variables) {
         /* ! 검증필요
         * Example
         * "[Info] level: ?인 ? 님 ?에 오신걸 환영합니다."

@@ -18,25 +18,31 @@ public class User {
 
     public User() {}
 
-    public User(String name, String userId, LocalDate signUpDate) {
-        this.name = name;
+    public User(String userId) {
         this.userId = userId;
+    }
+
+    public User(String userId, String name,LocalDate signUpDate) {
+        this.userId = userId;
+        this.name = name;
         this.signUpDate = signUpDate;
     }
 
-    public User(LocalDate birth_date, Character gender, String address, String phoneNumber, String job) {
+    public User(String name, LocalDate birth_date, Character gender, String address, String phoneNumber, String job, LocalDate signUpDate) {
+        this.name = name;
         this.birth_date = birth_date;
         this.gender = gender;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.job = job;
+        this.signUpDate = signUpDate;
     }
 
-    public String getuserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setuserId(String userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -110,5 +116,21 @@ public class User {
 
     public void setSignUpDate(LocalDate signUpDate) {
         this.signUpDate = signUpDate;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", birth_date=" + birth_date +
+                ", gender=" + gender +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", job='" + job + '\'' +
+                ", annualSalary=" + annualSalary +
+                ", signUpDate=" + signUpDate +
+                '}';
     }
 }

@@ -53,7 +53,7 @@ public class UserPage {
         page += "----------------------------------\n";
         page += "- ID: ";
         System.out.print(page);
-        user.setuserId(sc.nextLine().replace("\n",""));
+        user.setUserId(sc.nextLine().replace("\n",""));
         System.out.print("- PW: ");
         user.setPassword(sc.nextLine().replace("\n",""));
         System.out.println("----------------------------------");
@@ -86,7 +86,7 @@ public class UserPage {
             user = setInputNewUser(inputList[locationNum], inputValue, user);
 
             switch (inputList[locationNum]) {
-                case "id": correctInput = !user.getuserId().equals(Tag.NEW_GUEST.getTag());
+                case "id": correctInput = !user.getUserId().equals(Tag.NEW_GUEST.getTag());
                 case "password": correctInput = Objects.nonNull(user.getPassword());
                 case "이름": correctInput = Objects.nonNull(user.getName());
                 case "생년월일": correctInput = Objects.nonNull(user.getBirth_date());
@@ -107,22 +107,31 @@ public class UserPage {
 
         System.out.println("----------------------------------");
 
-        status.setDataValue(Tag.PUT_DATA, "new_user", user);
+        System.out.println("new_user: " + user.toString());// 테스트용 메시지
+
+        status.setDataValue(Tag.PUT_DATA, Tag.NEW_USER.getTag(), user);
+
 
         return status;
     }
 
     public static Status myInfoPage(Status status) {
         String page;
+        String gender = "";
         User user = (User) status.getDataValue(Tag.RESULT_USER.getTag());
+
+        switch (user.getGender()) {
+            case 'M' -> gender = "남성";
+            case 'F' -> gender = "여성";
+        }
 
         page = "----------------------------------\n";
         page += "              내 정보\n";
         page += "----------------------------------\n";
-        page += " ID: " + user.getuserId() + "\n";
+        page += " ID: " + status.getUserId() + "\n";
         page += " 이름: " + user.getName() + "\n";
         page += " 생년월일: " + user.getBirth_date() + "\n";
-        page += " 성별: " + user.getGender() + "\n";
+        page += " 성별: " + gender + "\n";
         page += " 휴대폰 번호: " + user.getPhoneNumber() + "\n";
         page += " 주소: " + user.getAddress() + "\n";
         page += " 가입날짜: " + user.getSignUpDate() + "\n";
@@ -138,7 +147,7 @@ public class UserPage {
         switch (location) {
             case "id" -> {
                 if (!CommonMethod.matchByRegex(Tag.REGEX_ONLY_NUMBER.getTag(),inputValue)) {
-                    user.setuserId(inputValue);
+                    user.setUserId(inputValue);
                 }
             }
             case "password" -> {

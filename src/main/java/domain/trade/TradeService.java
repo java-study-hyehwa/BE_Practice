@@ -5,7 +5,7 @@ import domain.account.AccountDao;
 import view.Status;
 import controller.Message;
 import controller.Tag;
-import common.repository.DriverConnector;
+import common.repository.rdsDriverConnectorImpl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -13,13 +13,14 @@ import java.util.ArrayList;
 
 public class TradeService {
 
-    DriverConnector driverConnector = new DriverConnector();
+    rdsDriverConnectorImpl driverConnector = new rdsDriverConnectorImpl();
     AccountDao accountDao = new AccountDao();
     TradeDao dao = new TradeDao();
 
-    public Status insert(Status status, Trade trade) throws SQLException {
+    public Status insert(Status status) throws SQLException {
         Connection con = null;
         ArrayList<Account> targetList;
+        Trade trade = (Trade) status.getDataValue(Tag.NEW_TRADE.getTag());
 
         // 신규 입/출금 Trade객체 유효성 검증
         con = driverConnector.connectDriver();
@@ -66,10 +67,11 @@ public class TradeService {
         return status;
     }
 
-    public Status transfer(Status status, Trade trade) throws SQLException {
+    public Status transfer(Status status) throws SQLException {
         Connection con = null;
         ArrayList<Account> requestList = new ArrayList<>();
         ArrayList<Account> targetList = new ArrayList<>();
+        Trade trade = (Trade) status.getDataValue(Tag.NEW_TRADE.getTag());
         String resultMessage;
 
         // 신규 송금 Trade객체 유효성 검증ㅇ
@@ -114,7 +116,7 @@ public class TradeService {
         return status;
     }
 
-    public ArrayList<Trade> selectAccountTradeHistory(Status status) throws SQLException {
+    public Status selectAccountTradeHistory(Status status) throws SQLException {
         Connection con = null;
         ArrayList<Trade> tradeList;
 
@@ -126,7 +128,9 @@ public class TradeService {
             if(con!=null) con.close();
         }
 
-        return tradeList;
+        status.setDataValue(Tag.PUT_DATA,Tag.RESULT_TRADE_LIST.getTag(),tradeList);
+
+        return status;
     }
 
 }

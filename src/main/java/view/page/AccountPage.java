@@ -14,8 +14,9 @@ import java.util.Scanner;
 public class AccountPage {
     static Scanner sc = ScannerSingleton.getInstance().getScanner();
 
-    public static Status manageAccountPage(Status status, ArrayList<Account> accountList) {
+    public static Status manageAccountPage(Status status) {
         String page, inputValue, account_owner;
+        ArrayList<Account> accountList = (ArrayList<Account>) status.getDataValue(Tag.RESULT_ACCOUNT_LIST.getTag());
 
         page = "----------------------------------\n";
         page += "        나의 계좌 내역 (" + accountList.size() +")\n";
@@ -114,8 +115,9 @@ public class AccountPage {
         return status;
     }
 
-    public static Status accountHistoryPage(Status status, ArrayList<Trade> tradeList) {
+    public static Status accountHistoryPage(Status status) {
         String page;
+        ArrayList<Trade> tradeList = (ArrayList<Trade>) status.getDataValue(Tag.RESULT_TRADE_LIST.getTag());
 
         page = "----------------------------------\n";
         page += "     "+ status.getData() + " 계좌 거래내역\n";
@@ -176,6 +178,7 @@ public class AccountPage {
 
     public static Status openAccountPage(Status status) {
         String page, inputValue;
+        String productType = "";
 
         page = "----------------------------------\n";
         page += "           신규 계좌 개설\n";
@@ -193,15 +196,16 @@ public class AccountPage {
             status.setMessage(Message.INFO_CANCLE_OPEN_ACCOUNT.getMessage());
             status.setPageTag(Tag.MANAGE_ACCOUNTS);
         } else if (inputValue.equals("1")) {
-            status.setDataValue(Tag.PUT_DATA, Tag.DEPOSIT_ACCOUNT.getTag(),Tag.DEPOSIT_ACCOUNT);
+            status.setDataValue(Tag.PUT_DATA, Tag.ACCOUNT_TYPE.getTag(), Tag.DEPOSIT_ACCOUNT.getTag());
         } else if (inputValue.equals("2")) {
-            status.setDataValue(Tag.PUT_DATA, Tag.SAVINGS_ACCOUNT.getTag(), Tag.SAVINGS_ACCOUNT);
+            status.setDataValue(Tag.PUT_DATA, Tag.ACCOUNT_TYPE.getTag(), Tag.SAVINGS_ACCOUNT.getTag());
         } else if (inputValue.equals("3")) {
-            status.setDataValue(Tag.PUT_DATA, Tag.CACHE_MANAGEMENT_ACCOUNT.getTag(), Tag.CACHE_MANAGEMENT_ACCOUNT);
+            status.setDataValue(Tag.PUT_DATA, Tag.ACCOUNT_TYPE.getTag(), Tag.CACHE_MANAGEMENT_ACCOUNT.getTag());
         } else {
             status.setMessage(Message.ERROR_WRONG_INPUT_WORKNUMBER.getMessage());
         }
-        System.out.println(Message.INFO_EXCUTE_OPEN_ACCOUNT.getMessage());
+        String product_type = (String) status.getDataValue(Tag.ACCOUNT_TYPE.getTag());
+        System.out.println(Message.INFO_EXCUTE_OPEN_ACCOUNT.getMessage(product_type));
 
         return status;
     }

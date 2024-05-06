@@ -1,6 +1,10 @@
 package view;
 
+import controller.Message;
 import controller.Tag;
+import domain.account.Account;
+import domain.trade.Trade;
+import domain.user.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +15,7 @@ public class Status<T> {
     private Tag pageTag;
     private String message;
     private String userId;
-    private Map<String,T> data;
+    private HashMap<String,T> data;
 
 
     public Status() {
@@ -19,7 +23,7 @@ public class Status<T> {
         this.workFlow = Tag.CONTINUE;
         this.pageTag = Tag.LOG_IN;
         this.userId = Tag.NEW_GUEST.getTag();
-        this.data = new HashMap<String, T>();
+        this.data = new HashMap<>();
     }
 
     public Boolean getRun() {
@@ -54,7 +58,7 @@ public class Status<T> {
         this.pageTag = pageTag;
     }
 
-    public Map<String, T> getData() {
+    public HashMap<String, T> getData() {
         return data;
     }
 
@@ -62,9 +66,10 @@ public class Status<T> {
         return data.get(key);
     }
 
-    public void setData(Map<String, T> data){
+    public void setData(HashMap<String, T> data){
         this.data = data;
     }
+
 
     public void setDataValue(Tag method, String key, T value) {
         if (method.equals(Tag.PUT_DATA)) {

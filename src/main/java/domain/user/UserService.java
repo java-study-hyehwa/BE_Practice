@@ -4,8 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import view.Status;
 import common.repository.DriverConnector;
+import common.repository.rdsDriverConnectorImpl;
+import view.Status;
 import controller.*;
 
 
@@ -13,18 +14,19 @@ import controller.*;
 public class UserService {
 
     Scanner sc = new Scanner(System.in);
-    DriverConnector driverConnector = new DriverConnector();
+    DriverConnector driverConnector = new rdsDriverConnectorImpl();
     UserDao dao = new UserDao();
 
 
-    public Status signUp(Status status, User user) throws SQLException {
+    public Status signUp(Status status) throws SQLException {
         Connection con = null;
         String resultMessage;
+        User user = (User) status.getDataValue(Tag.NEW_USER.getTag());
 
         // SQL 실행
         con = driverConnector.connectDriver();
         try {
-            ArrayList<User> userCheck = dao.selectCheckExistUser(con, user.getuserId());
+            ArrayList<User> userCheck = dao.selectCheckExistUser(con, user.getUserId());
             if (!userCheck.isEmpty()){
                 status.setMessage(Message.ERROR_WRONG_USER_SIGNUP.getMessage());
                 return status;
@@ -49,10 +51,10 @@ public class UserService {
         // SQL 실행
         con = driverConnector.connectDriver();
         try {
-            userList = dao.selectLogIn(con, user.getuserId(), user.getPassword());
+            userList = dao.selectLogIn(con, user.getUserId(), user.getPassword());
             if (!userList.isEmpty()){
-                status.setUserId(userList.getFirst().getuserId());
-                status.setMessage(Message.INFO_SUCCESS_LOGIN.getMessage(userList.getFirst().getName()));
+                status.setUserId(userList.getFirst().getUserId());
+                status.setMessage(Message.INFO_SUCCESS_LOGIN.getMessage(userList.getFirst().getUserId()));
                 status.setWorkFlow(Tag.CONTINUE);
                 status.setPageTag(Tag.MAIN);
             } else if (userList.isEmpty()){

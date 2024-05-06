@@ -50,7 +50,7 @@ public class Controller {
                 do {
                     try {
                         status = UserPage.signUpPage(status);
-                        status = service.signUp(status, user);
+                        status = service.signUp(status);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -84,8 +84,8 @@ public class Controller {
             case MANAGE_ACCOUNTS -> {
                 ArrayList<Account> accountList;
                 try {
-                     accountList = service.selectMyAccounts(status);
-                     status = AccountPage.manageAccountPage(status, accountList);
+                     status = service.selectMyAccounts(status);
+                     status = AccountPage.manageAccountPage(status);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -123,8 +123,8 @@ public class Controller {
             case ACCOUNT_HISTORY -> {
                 ArrayList<Trade> tradeList;
                 try {
-                    tradeList = service.selectAccountTradeHistory(status);
-                    status = AccountPage.accountHistoryPage(status, tradeList);
+                    status = service.selectAccountTradeHistory(status);
+                    status = AccountPage.accountHistoryPage(status);
 
                 } catch (SQLException e) {
 
@@ -142,7 +142,7 @@ public class Controller {
                 if (status.getPageTag().equals(Tag.WITHDRAW) ||
                     (status.getPageTag().equals(Tag.DEPOSIT) && status.getData().equals(Tag.MY_ACCOUNT.getTag()))){
                     try {
-                        accountList = accountService.selectMyAccounts(status);
+                        status = accountService.selectMyAccounts(status);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -155,7 +155,7 @@ public class Controller {
                     trade = TradePage.inputTradeInfo(status);
                     // 거래 insert 후 계좌 update 실행
                     try {
-                        status = service.insert(status, trade);
+                        status = service.insert(status);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -167,7 +167,7 @@ public class Controller {
                 boolean inputError = true;
 
                 try {
-                    accountList = accountService.selectMyAccounts(status);
+                    status = accountService.selectMyAccounts(status);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -181,7 +181,7 @@ public class Controller {
                     do {
                         // 보내는/받는 계좌 및 송금액 입력
                         try {
-                            status = service.transfer(status, trade);
+                            status = service.transfer(status);
                         } catch (SQLException e) {
                             e.printStackTrace();
                         }

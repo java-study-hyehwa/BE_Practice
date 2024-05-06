@@ -4,7 +4,7 @@ import view.Status;
 import controller.Message;
 import controller.Tag;
 import domain.user.UserDao;
-import common.repository.DriverConnector;
+import common.repository.rdsDriverConnectorImpl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import java.lang.Math;
 
 public class AccountService {
     Scanner sc = new Scanner(System.in);
-    DriverConnector driverConnector = new DriverConnector();
+    rdsDriverConnectorImpl driverConnector = new rdsDriverConnectorImpl();
     AccountDao dao = new AccountDao();
     UserDao userDao = new UserDao();
 
@@ -52,7 +52,7 @@ public class AccountService {
         }
     }
 
-    public ArrayList<Account> selectMyAccounts(Status status) throws SQLException {
+    public Status selectMyAccounts(Status status) throws SQLException {
         Connection con = null;
         ArrayList<Account> accountList;
 
@@ -63,7 +63,9 @@ public class AccountService {
             if(con!=null) con.close();
         }
 
-        return accountList;
+        status.setDataValue(Tag.PUT_DATA, Tag.RESULT_ACCOUNT_LIST.getTag(),accountList);
+
+        return status;
     }
 
 

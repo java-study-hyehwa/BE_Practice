@@ -23,12 +23,7 @@ public class UserDao {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 userId = rs.getString(1);
-                String name = rs.getString(2);
-                LocalDate signUpDate = rs.getTimestamp(3)
-                                         .toInstant()
-                                         .atZone(ZoneId.systemDefault())
-                                         .toLocalDate();
-                userlist.add(new User(userId, name, signUpDate));
+                userlist.add(new User(userId));
             }
         } finally {
             if(rs!=null) rs.close();
@@ -42,20 +37,13 @@ public class UserDao {
         ResultSet rs = null;
         ArrayList<User> userlist = new ArrayList<>();
         try {
-            String sql = Query.USER_SELECT_MY_INFO.getQueryString();
+            String sql = Query.USERL_SELECT_CHECK_EXIST.getQueryString();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userId);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                LocalDate birthDate = rs.getTimestamp(1)
-                        .toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate();
-                char gender = rs.getString(2).charAt(0);
-                String address = rs.getString(3);
-                String phoneNum = rs.getString(4);
-                String job = rs.getString(5);
-                userlist.add(new User(birthDate, gender, address, phoneNum, job));
+                userId = rs.getString(1);
+                userlist.add(new User(userId));
             }
         } finally {
             if(rs!=null) rs.close();
@@ -74,17 +62,23 @@ public class UserDao {
             String sql = Query.USER_SELECT_MY_INFO.getQueryString();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userId);
+
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                LocalDate birthDate = rs.getTimestamp(1)
+                String name = rs.getString(1);
+                LocalDate birthDate = rs.getTimestamp(2)
                         .toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate();
-                char gender = rs.getString(2).charAt(0);
-                String address = rs.getString(3);
-                String phoneNum = rs.getString(4);
-                String job = rs.getString(5);
-                userlist.add(new User(birthDate, gender, address, phoneNum, job));
+                char gender = rs.getString(3).charAt(0);
+                String address = rs.getString(4);
+                String phoneNum = rs.getString(5);
+                String job = rs.getString(6);
+                LocalDate signUpDate = rs.getTimestamp(7)
+                        .toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
+                userlist.add(new User(name, birthDate, gender, address, phoneNum, job, signUpDate));
             }
         } finally {
             if(rs!=null) rs.close();
@@ -100,11 +94,10 @@ public class UserDao {
         try {
             String sql = Query.USER_INSERT_SIGNUP.getQueryString();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, user.getuserId());
+            pstmt.setString(1, user.getUserId());
             pstmt.setString(2, user.getPassword());
             pstmt.setString(3,user.getName());
-            pstmt.setTimestamp(4,Timestamp.valueOf(user.getBirth_date()
-                                                                    .atTime(00,00,00)));
+            pstmt.setTimestamp(4,Timestamp.valueOf(user.getBirth_date().atTime(0,0,0)));
             pstmt.setString(5,String.valueOf(user.getGender()));
             pstmt.setString(6, user.getAddress());
             pstmt.setString(7, user.getPhoneNumber());
@@ -112,7 +105,7 @@ public class UserDao {
             pstmt.setInt(9, user.getAnnualSalary());
             result = pstmt.execute(); // 성공시 false, 실패시 true
             if (!result) {
-                resultMessage = Message.INFO_SUCCESS_USER_SIGNUP.getMessage(user.getuserId());
+                resultMessage = Message.INFO_SUCCESS_USER_SIGNUP.getMessage(user.getUserId());
             } else {
                 resultMessage = Message.ERROR_WRONG_USER_SIGNUP.getMessage();
             }
@@ -130,12 +123,12 @@ public class UserDao {
         try {
             String sql = Query.USER_DELETE_WITHDRAWAL.getQueryString();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, user.getuserId());
+            pstmt.setString(1, user.getUserId());
             pstmt.setString(2, user.getPassword());
             pstmt.setString(3,user.getName());
             result = pstmt.execute(); // 성공시 false, 실패시 true
             if (!result) {
-                resultMessage = Message.INFO_SUCCESS_USER_WITHDRAWAL.getMessage(user.getuserId());
+                resultMessage = Message.INFO_SUCCESS_USER_WITHDRAWAL.getMessage(user.getUserId());
             } else {
                 resultMessage = Message.ERROR_WRONG_USER_WITHDRAWAL.getMessage();
             }

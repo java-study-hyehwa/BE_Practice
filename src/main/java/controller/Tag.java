@@ -45,6 +45,10 @@ public enum Tag {
     DEPOSIT_ACCOUNT(() -> "예금"),
     SAVINGS_ACCOUNT(() -> "적금"),
     CACHE_MANAGEMENT_ACCOUNT(() -> "CMA"),
+    NEW_USER(() -> "new_user"),
+    NEW_TRADE(() -> "new_trade"),
+    RESULT_ACCOUNT_LIST(() -> "result_account_list"),
+    RESULT_TRADE_LIST(() -> "result_trade_list"),
 
     // Tags for Regex
     REGEX_ONLY_NUMBER(() -> "[0-9]+"),
