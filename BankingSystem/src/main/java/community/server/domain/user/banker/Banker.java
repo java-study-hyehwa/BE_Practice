@@ -1,6 +1,7 @@
 package community.server.domain.user.banker;
 
 import community.server.domain.user.User;
+import java.util.Optional;
 
 public record Banker(byte[] banker_uuid, String banker_name, String banker_password,
                      boolean authentication) implements User {
@@ -21,6 +22,7 @@ public record Banker(byte[] banker_uuid, String banker_name, String banker_passw
   }
 
   public void performAction() {
+
 
   }
 }
