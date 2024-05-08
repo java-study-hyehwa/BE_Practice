@@ -70,14 +70,14 @@ public class rdsDriverConnectorImpl implements DriverConnector {
     public Connection connectDriver() {
         Connection con = null;
         Session jumpSession = null;
-        Session remoteSession = null;
         int assinged_port = 0;
+        String osUser = System.getProperty("user.name");
 
         final String JUMP_USER = "ec2-user";
         final String  JUMP_HOST = "3.38.127.6";
         final int JUMP_PORT = 22;
-        final String KNOWNHOSTS = "C:\\Users\\ucheol\\.ssh\\known_hosts";
-        final String JUMP_KEY = "C:\\Users\\ucheol\\.ssh\\BEpractice-bastion-key.pem";
+        final String KNOWNHOSTS = "C:\\Users\\" + osUser + "\\.ssh\\known_hosts";
+        final String JUMP_KEY = "C:\\Users\\" + osUser + "\\.ssh\\BEpractice-bastion-key.pem";
 
         setConnectionInfo();
 
