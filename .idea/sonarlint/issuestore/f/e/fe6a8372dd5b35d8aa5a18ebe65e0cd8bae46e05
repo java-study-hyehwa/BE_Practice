@@ -1,0 +1,13 @@
+
+É
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(É¾Ş­úÿÿÿÿ8œ‰Ûõ1J$ae65b4a2-d724-459d-9709-461b08aff1ee
+v
+java:S1948".Make "loginService" transient or serializable.(­”ƒÇüÿÿÿÿ8‚œ‰Ûõ1J$405355da-97f0-4a1d-bf5b-bbbd4acea3aa
+m	java:S106"+Replace this use of System.out by a logger.(èĞš•8„œ‰Ûõ1J$341c80cd-77d0-42ee-9f13-965c55aa6bdb
+r	java:S106#"+Replace this use of System.out by a logger.(‰ÿ¡Åúÿÿÿÿ8İû‰Ûõ1J$1931dcf4-c433-4f32-a9c6-2ef75f370631
+›
+java:S1989%"SHandle the following exception that could be thrown by "sendRedirect": IOException.(òÉÂ„øÿÿÿÿ8†œ‰Ûõ1J$02832687-9e68-4a95-a1eb-fb0e77f26ccf
+k
+java:S1185,"(Remove this method to simply inherit it.(–õ°÷8†œ‰Ûõ1J$c1b101fc-ec38-46d1-8000-d95250dc5fe6
+ 
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(­”ƒÇüÿÿÿÿ8‡œ‰Ûõ1J$11d45d66-8a16-4db4-b63b-a6e6fcb04c34

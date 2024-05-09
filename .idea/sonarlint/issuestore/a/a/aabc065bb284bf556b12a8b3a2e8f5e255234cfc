@@ -1,0 +1,35 @@
+
+—
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(öÚ¥ùÿÿÿÿ8Ù’¥Úõ1J$cf25ab15-ac89-41c2-95bd-2235045fe1b8
+É
+java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ç„¨Àşÿÿÿÿ8ü›Úõ1J$33fd7beb-1791-4010-a9af-d17e0d50a35f
+Ä
+java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»ì´Ñ8ı›Úõ1J$fd5469fa-5ec0-4572-8906-6e6b674fd83f
+Ã
+java:S1186>"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢Æ 58ı›Úõ1J$3567ce64-a7cb-48bd-8456-9ca43a66d8cb
+Ä
+java:S1186s"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô±‚8ı›Úõ1J$39a56f17-2c7e-43aa-8d78-970400b7eff6
+É
+java:S1186w"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÈÀòùÿÿÿÿ8ı›Úõ1J$1f18e2a3-b3ea-43a0-83e7-c02c39f19af2
+u
+java:S1135"2Complete the task associated to this TODO comment.(À×øñ8Ù¹…Ûõ1J$39f4e562-8821-4c5b-ac84-14d68abbc59d
+m	java:S106"+Replace this use of System.out by a logger.(µè´Ù8‘›Úõ1J$9494054f-587b-4ebf-89da-f5b84bd2a9ff
+b
+java:S6905"Don't use the query "SELECT *".(—Áƒş8ÿ›Úõ1J$8596dc30-4cab-4fb4-88d8-9da5db7b361a
+l	java:S106#"+Replace this use of System.out by a logger.(¨¸ÿ&8ƒ‘›Úõ1J$a108e399-f246-405a-ad2f-a69b066ed6b3
+r	java:S106("+Replace this use of System.out by a logger.(ïÌüÿÿÿÿ8ƒ‘›Úõ1J$94c89276-fc88-4b2a-aba0-e02a033b42bb
+r	java:S106,"+Replace this use of System.out by a logger.(÷ªÃ˜üÿÿÿÿ8ƒ‘›Úõ1J$1ecb8b22-fc97-426c-ac1f-40074bf98532
+m	java:S106F"+Replace this use of System.out by a logger.(Ö¤«ë8ƒ‘›Úõ1J$c6bbbe47-17de-4b36-9ffa-46f2de390739
+r	java:S106G"+Replace this use of System.out by a logger.(Å˜õçüÿÿÿÿ8ƒ‘›Úõ1J$8b167637-057f-4156-8182-6735fd94c6b4
+r	java:S106H"+Replace this use of System.out by a logger.(Èâ´¯şÿÿÿÿ8…‘›Úõ1J$785890b7-2cbc-458b-bab6-860672f92c27
+r	java:S106I"+Replace this use of System.out by a logger.(ª²ô£ùÿÿÿÿ8…‘›Úõ1J$055f6e73-aa9b-4bae-b7ba-71e8acf92891
+m	java:S106J"+Replace this use of System.out by a logger.(ñÏñ‚8…‘›Úõ1J$c0da788e-cb97-4dcc-98ad-31b05cc397a9
+d	java:S131K""Add a default case to this switch.(¨ÕÉ8„‘›Úõ1J$8747345e-4a62-4baa-ba0e-e2616d17123c
+r	java:S106^"+Replace this use of System.out by a logger.(¶Çàúıÿÿÿÿ8…‘›Úõ1J$2d1d3555-364d-41a3-8530-5dd0654b36a4
+r	java:S106_"+Replace this use of System.out by a logger.(Å˜õçüÿÿÿÿ8…‘›Úõ1J$b9756b8f-405f-4926-ad7e-6b946ecb5723
+r	java:S106`"+Replace this use of System.out by a logger.(Èâ´¯şÿÿÿÿ8…‘›Úõ1J$eca382c7-e0ee-45c8-a7a2-9a1a25e11ff0
+r	java:S106a"+Replace this use of System.out by a logger.(ª²ô£ùÿÿÿÿ8´—†Ûõ1J$7dbdab98-f2ca-4d5b-b925-e924f4d0f5c3
+m	java:S106b"+Replace this use of System.out by a logger.(ñÏñ‚8ñœˆÛõ1J$edc23dee-a5c6-4ae5-a16f-b5c58d317de0
+L	java:S106c"+Replace this use of System.out by a logger.(é¿È”ùÿÿÿÿ8ÈÜˆÛõ1
+d	java:S131d""Add a default case to this switch.(¨ÕÉ8…‘›Úõ1J$558985b5-f6e1-4266-8e75-3cfd98684b47
+	java:S100s"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô±‚8†‘›Úõ1J$d626d4f4-74d1-4aba-b2ba-15860cfb63cc

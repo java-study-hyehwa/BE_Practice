@@ -1,5 +1,0 @@
-
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ﬂÔä[
-c
-java:S2095"MUse try-with-resources or close this "ExecutorService" in a "finally" clause.(†ÿ‰π
-7	java:S131""Add a default case to this switch.(ç®’…

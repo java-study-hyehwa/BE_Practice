@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BE_Practice.main:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/BE_Practice_main_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BE_Practice.main" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:8.0.28" />
+          <element id="library" level="project" name="Gradle: io.reactivex.rxjava3:rxjava:3.1.5" />
+          <element id="library" level="project" name="Gradle: com.fasterxml.uuid:java-uuid-generator:4.3.0" />
+          <element id="library" level="project" name="Gradle: org.mapstruct:mapstruct:1.4.2.Final" />
+          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.5.3" />
+          <element id="library" level="project" name="Gradle: com.google.protobuf:protobuf-java:3.11.4" />
+          <element id="library" level="project" name="Gradle: org.reactivestreams:reactive-streams:1.0.4" />
+          <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.36" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="BE_Practice.main/web/Web" />
+    </root>
+  </artifact>
+</component>
